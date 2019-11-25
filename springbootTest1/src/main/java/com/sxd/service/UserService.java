@@ -1,6 +1,7 @@
 package com.sxd.service;
 
 
+import com.sxd.dto.InfoDTO;
 import com.sxd.pojo.TbRole;
 import com.sxd.vo.Page;
 import com.github.pagehelper.PageHelper;
@@ -47,8 +48,13 @@ public class UserService {
         return i;
     }
 
-    public TbUser getOne(Integer id) {
-        return mapper.selectUser(id);
+    public InfoDTO getOne(Integer id) {
+        TbUser user = mapper.selectUser(id);
+        List<TbRole> tbRoles = mapper.selectAllRole();
+        InfoDTO dto=new InfoDTO();
+        dto.setUser(user);
+        dto.setRoles(tbRoles);
+        return dto;
     }
 
     public int update(TbUser tbUser) {

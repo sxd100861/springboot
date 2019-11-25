@@ -1,5 +1,6 @@
 package com.sxd.controller;
 
+import com.sxd.dto.InfoDTO;
 import com.sxd.pojo.TbRole;
 import com.sxd.vo.Page;
 import com.sxd.pojo.TbUser;
@@ -28,19 +29,18 @@ public class UserController {
         map.put("size",size);
         return "list";
     }
-    @GetMapping("/user/delete")
+    @DeleteMapping("/user/delete")
     public String delete(@RequestParam("id")Integer id){
         int i = service.delete(id);
         return "redirect:/user/list";
     }
     @GetMapping("/user/info")
     public String getOne(@RequestParam("id")Integer id, ModelMap map){
-        TbUser user = service.getOne(id);
-        System.out.println(user);
-        map.put("user",user);
+        InfoDTO dto = service.getOne(id);
+        map.put("dto",dto);
         return "update";
     }
-    @PostMapping("/user/update")
+    @PutMapping("/user/update")
     public String update(TbUser tbUser){
        int i=service.update(tbUser);
        return "redirect:/user/list";

@@ -254,8 +254,14 @@
 						<td th:text="${u.age}"></td>
 						<td th:text="${#dates.format(u.birthday, 'yyyy-MM-dd')}"></td>
 						<td th:text="${u.roleName}"></td>
-						<td><a th:href="@{/user/info(id=${u.id})}">编辑</a></td>
-						<td><a onclick="return confirm('你确定删除吗？')" th:href="@{/user/delete(id=${u.id})}">删除</a></td>
+						<td>
+							<a th:href="@{/user/info(id=${u.id})}">编辑</a></td>
+						<td>
+							<form th:action="@{/user/delete(id=${u.id})}" method="post"/>
+								<input type="hidden" name="_method" value="delete">
+								<button onclick="deleteUser()">删除</button>
+							</form>
+						</td>
 					</tr>
 					</tbody>
 				</table>
