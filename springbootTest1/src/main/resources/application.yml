@@ -1,0 +1,13 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/db8?serverTimezone=CST
+    username: root
+    password: 100861
+  mvc:
+    dare-format: yyyy-MM-dd #日期格式
+  thymeleaf:
+    cache: false #关闭thymeleaf模板缓存 项目上线时开启
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true #开启驼峰标识
